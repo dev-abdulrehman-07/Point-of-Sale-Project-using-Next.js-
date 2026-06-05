@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import SideBar from "@/POS-interface-Components/sideBar";
+import StoreProvider from "@/store/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +13,32 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const bebasNeue = localFont({
+  src: './fonts/BebasNeue-Regular.ttf',
+  variable: '--font-bebas',
+});
+
+const jersey10 = localFont({
+  src: './fonts/Jersey10-Regular.ttf',
+  variable: '--font-jersey',
+});
+
+const googleSans = localFont({
+  src: [
+    {
+      path: './fonts/GoogleSans-VariableFont_GRAD,opsz,wght.ttf',
+      weight: '100 900', 
+      style: 'normal',
+    },
+    {
+      path: './fonts/GoogleSans-Italic-VariableFont_GRAD,opsz,wght.ttf',
+      weight: '100 900',
+      style: 'italic',
+    }
+  ],
+  variable: '--font-google-sans',
 });
 
 export const metadata: Metadata = {
@@ -25,9 +54,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      /* ✅ FIX: Yahan googleSans.variable missing tha, ab add kar diya hai */
+      className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${jersey10.variable} ${googleSans.variable} h-full antialiased  `}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-black grid grid-cols-[60px_repeat(11,1fr)]">
+      <div className="h-screen w-full col-span-1 sticky top-1 pr-2">
+        <SideBar/>
+      </div>
+        <div className="col-span-11">
+        <StoreProvider>
+          {children}
+        </StoreProvider>
+        </div>
+        </body>
     </html>
   );
 }
