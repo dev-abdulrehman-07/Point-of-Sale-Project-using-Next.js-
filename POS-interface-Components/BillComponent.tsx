@@ -18,10 +18,8 @@ function BillComponent() {
   const total = subtotal + gst;
 
   return (
-    // Fixed Height Container
     <div className="h-screen w-full bg-white p-6 flex flex-col justify-between border-l border-gray-200 sticky top-2.5">
-      
-      {/* 1. Top Heading Section */}
+
       <div className="border-b border-gray-200 pb-4 mb-4">
         <h2 className="text-xl font-black tracking-wider uppercase text-black flex items-center justify-between">
           <span>Current Order</span>
@@ -29,16 +27,12 @@ function BillComponent() {
             {cartItems.length} Items
           </span>
         </h2>
-        
-        {/* Cashier Context UI */}
         {activeEmployee && (
           <p className="text-xs text-gray-500 mt-2">
             Cashier: <span className="font-bold text-black">{activeEmployee.name}</span>
           </p>
         )}
       </div>
-
-      {/* 2. Scrollable Cart Items Area */}
       <div className="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
         {cartItems.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-gray-400 text-sm gap-2">

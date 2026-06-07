@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import SideBar from "@/POS-interface-Components/sideBar";
+
 import StoreProvider from "@/store/StoreProvider";
 
 const geistSans = Geist({
@@ -54,18 +54,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      /* ✅ FIX: Yahan googleSans.variable missing tha, ab add kar diya hai */
-      className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${jersey10.variable} ${googleSans.variable} h-full antialiased  `}
+      className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${jersey10.variable} ${googleSans.variable}  antialiased  `}
     >
-      <body className="min-h-full bg-black grid grid-cols-[60px_repeat(11,1fr)]">
-      <div className="h-screen w-full col-span-1 sticky top-1 pr-2">
-        <SideBar/>
-      </div>
-        <div className="col-span-11">
+      <body className="bg-black">
+      
         <StoreProvider>
           {children}
         </StoreProvider>
-        </div>
+      
         </body>
     </html>
   );

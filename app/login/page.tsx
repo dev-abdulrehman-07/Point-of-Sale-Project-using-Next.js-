@@ -1,25 +1,23 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
+import { useForm,SubmitHandler } from 'react-hook-form'
 
-const BRAND_COLOR = '#800020' // Velvet Maroon
+const BRAND_COLOR = '#800020' 
+
+interface Inputs {
+  email : string,
+  password : string
+}
+const onSubmit =()=>{
+
+}
 
 export default function LoginPage() {
-  const [formData, setFormData] = useState({ email: '', password: '' })
-  const [focusedField, setFocusedField] = useState('')
 
-  const handleFocus = (fieldName) => setFocusedField(fieldName)
-  const handleBlur = () => setFocusedField('')
+const {register, handleSubmit,formState :{errors} } =  useForm<Inputs>()
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Logging in with:', formData)
-  }
 
   return (
     <main className="w-full min-h-screen flex flex-row bg-neutral-50 select-none">
@@ -84,7 +82,7 @@ export default function LoginPage() {
           <div className="text-center lg:text-left mb-8">
             <div className="lg:hidden mb-4">
               <span className="text-base font-bold tracking-[0.25em] uppercase" style={{ color: BRAND_COLOR }}>
-              VELURE.
+                VELURE.
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-light tracking-wider text-neutral-800 uppercase">
@@ -95,35 +93,24 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full">
             
             {/* Input Wrapper: Email */}
             <div className="relative w-full">
               <label 
                 htmlFor="email"
-                className={`absolute left-4 transition-all duration-300 font-sans tracking-wider pointer-events-none uppercase text-[10px] font-semibold
-                  ${focusedField === 'email' || formData.email
-                    ? 'top-2 opacity-100' 
-                    : 'top-4 opacity-40'
-                  }`}
-                style={{ color: focusedField === 'email' ? BRAND_COLOR : '#737373' }}
+                className="absolute left-4 top-2 opacity-100 font-sans tracking-wider pointer-events-none uppercase text-[10px] font-semibold"
+                style={{ color: BRAND_COLOR }}
               >
                 Email Address
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                onFocus={() => handleFocus('email')}
-                onBlur={handleBlur}
-                required
-                className={`w-full bg-neutral-50 border rounded-2xl px-4 font-sans text-xs tracking-wide transition-all duration-300 outline-none
-                  ${focusedField === 'email' 
-                    ? 'pt-6 pb-2 border-neutral-800 bg-white shadow-sm shadow-neutral-100' 
-                    : 'py-4 border-neutral-200/70'
-                  }`}
+                type="text"
+                {...register("email",{required:{value:true,message:"Please Enter Email"},pattern: {
+                  value: /^[a-zA-Z0-0._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 
+                  message: "Sahi email address likhein (jaise: name@example.com)",
+                }})}
+                className="w-full bg-white border border-neutral-800 rounded-2xl px-4 font-sans text-xs tracking-wide transition-all duration-300 outline-none pt-6 pb-2 shadow-sm shadow-neutral-100"
               />
             </div>
 
@@ -131,36 +118,28 @@ export default function LoginPage() {
             <div className="relative w-full">
               <label 
                 htmlFor="password"
-                className={`absolute left-4 transition-all duration-300 font-sans tracking-wider pointer-events-none uppercase text-[10px] font-semibold
-                  ${focusedField === 'password' || formData.password
-                    ? 'top-2 opacity-100' 
-                    : 'top-4 opacity-40'
-                  }`}
-                style={{ color: focusedField === 'password' ? BRAND_COLOR : '#737373' }}
+                className="absolute left-4 top-2 opacity-100 font-sans tracking-wider pointer-events-none uppercase text-[10px] font-semibold"
+                style={{ color: BRAND_COLOR }}
               >
                 Password
               </label>
               <input
                 type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                onFocus={() => handleFocus('password')}
-                onBlur={handleBlur}
-                required
-                className={`w-full bg-neutral-50 border rounded-2xl px-4 font-sans text-xs tracking-wide transition-all duration-300 outline-none
-                  ${focusedField === 'password' 
-                    ? 'pt-6 pb-2 border-neutral-800 bg-white shadow-sm shadow-neutral-100' 
-                    : 'py-4 border-neutral-200/70'
-                  }`}
+                {...register("password",
+                  {
+                    required:{value:true,message:"Password is Required"},
+                  minLength:{value:8,message:"Atleaset Password have 8 Characters"},
+                  maxLength:{value:20,message:"Max Length is 20"}
+                })
+              }
+                className="w-full bg-white border border-neutral-800 rounded-2xl px-4 font-sans text-xs tracking-wide transition-all duration-300 outline-none pt-6 pb-2 shadow-sm shadow-neutral-100"
               />
             </div>
 
             {/* Forgot Password Link */}
             <div className="flex justify-end -mt-1">
               <Link 
-                href="comingsoon"
+                href="/comingsoon"
                 className="text-[10px] font-sans font-semibold tracking-wider text-neutral-400 hover:text-black transition-colors duration-200 uppercase underline underline-offset-2"
               >
                 Forgot Password?
@@ -175,6 +154,7 @@ export default function LoginPage() {
             >
               Sign In to Account
             </button>
+
 
           </form>
 

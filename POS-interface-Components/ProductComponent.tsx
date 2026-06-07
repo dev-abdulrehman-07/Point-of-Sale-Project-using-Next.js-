@@ -50,10 +50,100 @@ function ProductComponent() {
       quantity: 1,
       price: 1200,
     },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 5,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 6,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 7,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 8,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    },
+    {
+      id: 9,
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60",
+      title: "Cheese Loaded Pizza",
+      description: "Extra cheese aur mazedar toppings wala pizza.",
+      isActive: true,
+      quantity: 1,
+      price: 1200,
+    }
   ];
 
   return (
-    <div className="relative flex flex-col overflow-y-auto pb-20 overflow-x-hidden bg-white">
+    <div className="relative flex flex-col overflow-y-auto pb-10 overflow-x-hidden bg-white">
       {/* Top Search & Filter Bar */}
       <div className="sticky top-0 z-50 bg-white flex h-[60px] items-center px-3 my-0 gap-x-4 w-full">
         <div className="relative flex items-center min-w-[260px] my-10 ml-8 max-w-[320px] h-[45px]">
@@ -94,7 +184,7 @@ function ProductComponent() {
       </div>
 
       {/* Products Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-8 max-w-[1200px] h-full w-full p-4 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8 max-w-[1200px] h-full w-full p-10 mx-auto">
         {cardData.map((product, i) => (
           <div key={i} className="flex flex-col border-neutral-800 rounded-[24px] text-white hover:border-neutral-700 transition-all duration-300 group">
             <div className="relative w-full aspect-[5/4] rounded-[20px] overflow-hidden mb-2 bg-neutral-800">

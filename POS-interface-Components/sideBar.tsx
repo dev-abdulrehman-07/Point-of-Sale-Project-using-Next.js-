@@ -24,7 +24,7 @@ function SideBar() {
   return (
     // Deep Dark background with rounded corners on the right.
     // w-full uses the full 80px of the grid column.
-    <div className='bg-[#111111] w-full h-full rounded-r-4xl border-r border-[#333] flex flex-col items-center py-8 gap-8'>
+    <div className='bg-[#111111] w-full h-full rounded-r-4xl border-r border-[#333] flex flex-col items-center py-8 gap-8 sticky top-1'>
       
       {/* Top Section: Integrated POS Logo/Brand */}
       
