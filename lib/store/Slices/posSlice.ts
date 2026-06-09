@@ -25,14 +25,11 @@ export const posSlice = createSlice({
   name: "pos",
   initialState,
   reducers: {
-    // Yeh naya action add karein refresh ke baad data wapas laane ke liye
     hydrateOrder: (state, action: PayloadAction<ProductType[]>) => {
       state.order = action.payload;
     },
-    // posSlice.ts ke reducers mein yeh add karein:
 removeFromOrder: (state, action: PayloadAction<number>) => {
   const productId = action.payload;
-  // Direct item ko array se urha do
   state.order = state.order.filter((item) => item.id !== productId);
 },
     addToOrder: (state, action: PayloadAction<ProductType>) => {

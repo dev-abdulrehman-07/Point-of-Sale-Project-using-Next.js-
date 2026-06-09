@@ -1,6 +1,6 @@
 'use client'
 import React, { PropsWithChildren, useState } from 'react'
-import SideBar from "@/POS-interface-Components/sideBar"
+import SideBar from "@/components/POS-interface-Components/sideBar"
 import { UserRound, Menu, X, LayoutDashboard, Users, ShoppingCart, Settings, LogOut, HelpCircle } from 'lucide-react'
 
 function AdminLayout({ children }: PropsWithChildren) {

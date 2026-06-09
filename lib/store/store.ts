@@ -1,8 +1,8 @@
 import { useDispatch, useSelector, useStore } from "react-redux";
-import posSlice from "./posSlice";
+import posSlice from "./Slices/posSlice";
 import { configureStore, Middleware } from "@reduxjs/toolkit";
-import { mainApi } from "@/frontend Api/main.api";
-import posReducer from "./posSlice";
+import { mainApi } from "@/lib/store/Api-Hooks/main.api";
+import posReducer from "./Slices/posSlice";
 const localStorageMiddleware: Middleware =
   (storeInstance) => (next) => (action) => {
     const result = next(action);

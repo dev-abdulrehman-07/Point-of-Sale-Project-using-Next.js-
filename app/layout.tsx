@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import StoreProvider from "@/store/StoreProvider";
+import StoreProvider from "@/lib/store/store-provider/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,7 +56,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${jersey10.variable} ${googleSans.variable}  antialiased  `}
     >
-      <body className="bg-black">
+      <body className="bg-black m-0">
       
         <StoreProvider>
           {children}

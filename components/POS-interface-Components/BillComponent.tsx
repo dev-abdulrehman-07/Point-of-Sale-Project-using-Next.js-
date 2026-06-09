@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Minus, Plus, Trash2, FileText, Bookmark } from 'lucide-react';
-import { useAppSelector, useAppDispatch } from '@/lib/RTK/store'; 
-import { addToOrder, decreaseQuantity, removeFromOrder, clearPOS } from '@/lib/RTK/posSlice'; // removeFromOrder import kiya
+import { useAppSelector, useAppDispatch } from '@/lib/store/store'; 
+import { addToOrder, decreaseQuantity, removeFromOrder, clearPOS } from '@/lib/store/Slices/posSlice'; // removeFromOrder import kiya
 
 function BillComponent() {
   const dispatch = useAppDispatch(); 

@@ -2,8 +2,8 @@
 
 import { useRef, useEffect } from "react";
 import { Provider } from "react-redux";
-import { makeStore,AppStore } from "@/lib/RTK/store";
-import { hydrateOrder } from "@/lib/RTK/posSlice"; // Apni slice se action import karein
+import { makeStore,AppStore } from "@/lib/store/store";
+import { hydrateOrder } from "@/lib/store/Slices/posSlice"; // Apni slice se action import karein
 
 export default function StoreProvider({ children }: { children: React.ReactNode }) {
   const storeRef = useRef<AppStore | null>(null);

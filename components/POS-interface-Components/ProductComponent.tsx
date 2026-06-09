@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { addToOrder } from "@/lib/RTK/posSlice";
-import { useAppDispatch } from "@/lib/RTK/store"; // Redux custom hook import kiya
+import { addToOrder } from "@/lib/store/Slices/posSlice";
+import { useAppDispatch } from "@/lib/store/store"; // Redux custom hook import kiya
 
 // Card Data ki type design ki
 type cardDataType = {

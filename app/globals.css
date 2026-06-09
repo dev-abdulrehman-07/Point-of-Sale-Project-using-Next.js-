@@ -4,17 +4,10 @@
 @theme {
   --breakpoint-xs: 375px;
 
-  /* Fonts integration */
   --font-bebas: var(--font-bebas);
   --font-jersey: var(--font-jersey);
   
-  /* Google Sans ko default sans font assign kar diya */
   --font-sans: var(--font-google-sans);
 }
 
 
-body{
-  background: black;
-  padding-top: 10px;
-  
-}
