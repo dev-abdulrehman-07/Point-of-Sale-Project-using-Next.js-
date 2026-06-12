@@ -3,6 +3,11 @@ import posSlice from "./Slices/posSlice";
 import { configureStore, Middleware } from "@reduxjs/toolkit";
 import { mainApi } from "@/lib/store/Api-Hooks/main.api";
 import posReducer from "./Slices/posSlice";
+import { userInfo } from "./Slices/userInfo";
+
+
+
+
 const localStorageMiddleware: Middleware =
   (storeInstance) => (next) => (action) => {
     const result = next(action);
@@ -16,7 +21,8 @@ export const makeStore = () => {
   return configureStore({
     reducer: {
       pos: posReducer,
-      [mainApi.reducerPath]:mainApi.reducer
+      [mainApi.reducerPath]:mainApi.reducer,
+      [userInfo.reducerPath] : userInfo.reducer
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(localStorageMiddleware).concat(mainApi.middleware),

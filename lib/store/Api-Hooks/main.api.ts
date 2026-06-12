@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { body } from "motion/react-client";
 
 
 export interface loginRequest {
@@ -13,8 +12,17 @@ export interface LoginResponse {
     id: string;
     name : string;
     email: string;
-    role: string;
+    role: "admin" | "employee" | "Shef" | "invertrymanager" ;
   };
+}
+export interface accActivation_request {
+  password : string ,
+  confirmpassword : string
+
+}
+
+export interface AddEmployeeResponse {
+  message: string;
 }
 
 
@@ -29,7 +37,7 @@ export const mainApi = createApi({
       providesTags: ["getemployee"],
     }),
 
-    addemployee: builder.mutation<any[], any>({
+    addemployee: builder.mutation<AddEmployeeResponse, any>({
       query: (newEmployee) => ({
         url: "/addemployee",
         method : 'POST',
@@ -46,7 +54,20 @@ export const mainApi = createApi({
         method : 'POST',
         body : loginData
       })
-    })
+    }),
+
+
+    accActivation : builder.mutation<LoginResponse,accActivation_request>({
+query : (sendData)=>({
+url : "/accountactivation",
+method : 'POST',
+body : sendData
+})
+
+
+
+
+    }) 
 
 
 
@@ -56,4 +77,4 @@ export const mainApi = createApi({
   }),
 });
 
-export const { useAddemployeeMutation, useGetemployeeQuery,useLoginMutation } = mainApi;
+export const { useAddemployeeMutation, useGetemployeeQuery,useLoginMutation,useAccActivationMutation } = mainApi;

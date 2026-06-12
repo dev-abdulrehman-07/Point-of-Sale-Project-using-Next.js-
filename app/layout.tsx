@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import StoreProvider from "@/lib/store/store-provider/StoreProvider";
+import TransitionProvider from "@/Providers/transition.Provider";
+import AuthProvider from "@/Providers/authprovider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,29 +18,29 @@ const geistMono = Geist_Mono({
 });
 
 const bebasNeue = localFont({
-  src: './fonts/BebasNeue-Regular.ttf',
-  variable: '--font-bebas',
+  src: "./fonts/BebasNeue-Regular.ttf",
+  variable: "--font-bebas",
 });
 
 const jersey10 = localFont({
-  src: './fonts/Jersey10-Regular.ttf',
-  variable: '--font-jersey',
+  src: "./fonts/Jersey10-Regular.ttf",
+  variable: "--font-jersey",
 });
 
 const googleSans = localFont({
   src: [
     {
-      path: './fonts/GoogleSans-VariableFont_GRAD,opsz,wght.ttf',
-      weight: '100 900', 
-      style: 'normal',
+      path: "./fonts/GoogleSans-VariableFont_GRAD,opsz,wght.ttf",
+      weight: "100 900",
+      style: "normal",
     },
     {
-      path: './fonts/GoogleSans-Italic-VariableFont_GRAD,opsz,wght.ttf',
-      weight: '100 900',
-      style: 'italic',
-    }
+      path: "./fonts/GoogleSans-Italic-VariableFont_GRAD,opsz,wght.ttf",
+      weight: "100 900",
+      style: "italic",
+    },
   ],
-  variable: '--font-google-sans',
+  variable: "--font-google-sans",
 });
 
 export const metadata: Metadata = {
@@ -57,12 +59,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${jersey10.variable} ${googleSans.variable}  antialiased  `}
     >
       <body className="bg-black m-0">
-      
-        <StoreProvider>
-          {children}
-        </StoreProvider>
-      
-        </body>
+        <TransitionProvider>
+          <StoreProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </StoreProvider>
+        </TransitionProvider>
+      </body>
     </html>
   );
 }

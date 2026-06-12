@@ -8,11 +8,9 @@ import { addToOrder, decreaseQuantity, removeFromOrder, clearPOS } from '@/lib/s
 function BillComponent() {
   const dispatch = useAppDispatch(); 
   
-  // Sahi Tareeqa: Sirf redux se state read karein. Next.js crash bilkul solve!
   const cartItems = useAppSelector((state) => state.pos.order);
   const activeEmployee = useAppSelector((state) => state.pos.activeEmployee);
 
-  // Bill Calculations
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const gst = Math.round(subtotal * 0.16); 
   const total = subtotal + gst;

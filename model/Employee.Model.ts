@@ -11,6 +11,7 @@ const employeeSchema = new mongoose.Schema({
     },
     role : {
         type : String,
+        enum: ['admin', 'employee', 'Shef','invertrymanager'],
         required : true
     },
 
@@ -30,7 +31,10 @@ const employeeSchema = new mongoose.Schema({
     timestamps : true ,
 }
 )
+type BaseEmployee = InferSchemaType<typeof employeeSchema>;
 
-export type iEmployee = InferSchemaType<typeof employeeSchema>
+export type iEmployee = BaseEmployee & {
+  _id: mongoose.Types.ObjectId; 
+};
 
 export const Employee = mongoose.models.Employee || mongoose.model("Employee",employeeSchema);

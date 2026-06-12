@@ -6,7 +6,7 @@ import { UserRound, Menu, X, LayoutDashboard, Users, ShoppingCart, Settings, Log
 function AdminLayout({ children }: PropsWithChildren) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
-  // موبائل مینیو کے لنکس (انہیں آپ اپنے پروجیکٹ کے روٹس کے مطابق بدل سکتے ہیں)
+  
   const mobileNavLinks = [
     { label: 'Dashboard', icon: <LayoutDashboard size={20} />, active: true },
     { label: 'Manage Employees', icon: <Users size={20} />, active: false },

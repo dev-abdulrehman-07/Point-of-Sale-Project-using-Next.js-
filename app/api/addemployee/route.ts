@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     if (!fullname || !email || !salary || !role) {
       return NextResponse.json(
         { message: "Fullname, Email, Role, aur Salary dena zaroori hai!" },
-        { status: 400 }       
+               
     );
     }
 
@@ -19,14 +19,14 @@ export async function POST(request: Request) {
     if (cleanSalary) {
       return NextResponse.json(
         { message: "Salary valid number honi chahiye" },
-        { status: 400 }
+       
       );
     }
 
     if(salary < 0){
       return NextResponse.json(
         { message: "Salary 0 se zyada honi chahiye!" },
-        { status: 400 }
+    
       );
 
     }
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     if (existemail) {
       return NextResponse.json(
         { message: "Email Already Exists" },
-        { status: 400 } 
+      
     );
     }
 
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { message: "User Created Successfully", data: create },
-      { status: 201 } 
+    
     );
 
   } catch (error) {
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     
     return NextResponse.json(
       { message: `Internal Server Error: ${errorMessage}` },
-      { status: 500 } 
+     
     );
   }
 }
