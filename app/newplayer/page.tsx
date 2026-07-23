@@ -35,18 +35,15 @@ export default function FirstLoginProps() {
     }
 
     try {
-      // 2. Function ke andar sirf API trigger karo bina array destructuring ke
       const res = await sendData({
         password: password,
         confirmpassword: confirmPassword,
       }).unwrap();
 
-      // Backend se humne message: "/" bheja hai success par
       if (res.success || res.message === "/") {
         router.replace('/');
       }
     } catch (err: any) {
-      // Backend error message handle karne ke liye
       setError(err?.data?.message || 'Something went wrong. Please try again.');
     }
   };
@@ -54,7 +51,6 @@ export default function FirstLoginProps() {
   return (
     <div style={brandStyles} className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-[#fcfcfc] font-sans overflow-hidden">
       
-      {/* Left Column: Visual Brand Image Showcase (Visible on Large Screens) */}
       <div className="hidden lg:block relative bg-[#1c0d12] overflow-hidden">
         <div className="absolute inset-0 bg-black/50 z-10" />
         <Image
@@ -89,7 +85,6 @@ export default function FirstLoginProps() {
         </div>
       </div>
 
-      {/* Right Column: Dynamic Form Workspace */}
       <div className="flex items-center justify-center p-8 sm:p-12 lg:p-16">
         <div className="w-full max-w-md bg-white p-8 sm:p-10 rounded-2xl shadow-xl shadow-slate-100/50 border border-slate-100">
           <div className="text-center mb-8">

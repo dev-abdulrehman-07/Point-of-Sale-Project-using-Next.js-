@@ -30,10 +30,10 @@ function UserprofileComp() {
   }
 
   return (
-    <div className="xs:hidden sm:flex justify-center flex-col relative">
-      <h1 className="text-[14px] font-medium text-slate-200">{displayName}</h1>
+    <div className="sm:flex justify-center flex-col relative">
+      <h1 className="xs:text-[10px] text-[14px] font-medium  text-slate-500">{displayName}</h1>
       <div className="flex items-center gap-x-1">
-        <p className="text-[10px] text-slate-400 uppercase tracking-wider">{displayRole}</p>
+        <p className="text-[10px] xs:text-[8px] text-slate-400 uppercase tracking-wider">{displayRole}</p>
         <div className="h-2 w-2 bg-[#ccff66] animate-pulse rounded-full"></div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { configureStore, Middleware } from "@reduxjs/toolkit";
 import { mainApi } from "@/lib/store/Api-Hooks/main.api";
 import posReducer from "./Slices/posSlice";
 import { userInfo } from "./Slices/userInfo";
+import stepReducer from "./Slices/stepSlice";
 
 
 
@@ -12,15 +13,21 @@ const localStorageMiddleware: Middleware =
   (storeInstance) => (next) => (action) => {
     const result = next(action);
     const state = storeInstance.getState();
+
     if (typeof window !== "undefined") {
       localStorage.setItem("pos_order", JSON.stringify(state.pos.order));
+      localStorage.setItem("pos_total", JSON.stringify(state.pos.totalsOfOrder));
     }
     return result;
   };
+
+
+
 export const makeStore = () => {
   return configureStore({
     reducer: {
       pos: posReducer,
+      stepchanger : stepReducer,
       [mainApi.reducerPath]:mainApi.reducer,
       [userInfo.reducerPath] : userInfo.reducer
     },
@@ -28,6 +35,9 @@ export const makeStore = () => {
       getDefaultMiddleware().concat(localStorageMiddleware).concat(mainApi.middleware),
   });
 };
+
+
+
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];

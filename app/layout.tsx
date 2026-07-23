@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-
 import StoreProvider from "@/lib/store/store-provider/StoreProvider";
 import TransitionProvider from "@/Providers/transition.Provider";
-import AuthProvider from "@/Providers/authprovider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,7 +59,7 @@ export default function RootLayout({
       <body className="bg-black m-0">
         <TransitionProvider>
           <StoreProvider>
-            <AuthProvider>{children}</AuthProvider>
+            {children}
           </StoreProvider>
         </TransitionProvider>
       </body>

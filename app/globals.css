@@ -17,11 +17,11 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  pointer-events: none; /* Mouse interactions page content par click hone dengi */
+  pointer-events: none;
 }
 
 .transition-block {
-  background-color: #111111; /* Velvet branding theme dark layer background */
+  background-color: #111111;
   box-sizing: border-box;
 }
 
@@ -146,3 +146,5 @@
     @apply font-sans;
   }
 }
+
+

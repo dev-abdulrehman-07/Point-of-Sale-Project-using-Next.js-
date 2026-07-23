@@ -8,7 +8,8 @@ import {
   Receipt, 
   Users, 
   UserSquare2, 
-  Settings 
+  Settings,
+  LaptopMinimal, 
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -16,6 +17,7 @@ function SideBar() {
   const router = useTransitionRouter();
 
   const menuItems = [
+    { icon: LaptopMinimal, label: 'Work' , route : "/point-of-sale" },
     { icon: LayoutDashboard, label: 'Dashboard' ,route : "/point-of-sale/dashboard"},
     { icon: ShoppingBag, label: 'Orders' ,route : "/point-of-sale/orders"},
     { icon: Receipt, label: 'Order History' , route : "/point-of-sale/orderhistory" },

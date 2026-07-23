@@ -12,13 +12,12 @@ const ROWS = 4;
 const COLS = 16;
 
 export default function TransitionProvider({ children }: TransitionProviderProps) {
-  // Correct HTML and Element-Array definitions for TypeScript pipeline
   const transitionGridRef = useRef<HTMLDivElement | null>(null);
   const blocksRef = useRef<HTMLDivElement[]>([]);
 
   const createTransitionGrid = () => {
     const container = transitionGridRef.current;
-    if (!container) return; // Ensuring container is loaded before DOM operations
+    if (!container) return;
 
     container.innerHTML = "";
     blocksRef.current = [];
@@ -44,7 +43,6 @@ export default function TransitionProvider({ children }: TransitionProviderProps
         blocksRef.current.push(block);
       }
     }
-    // Set baseline state on compilation layout initialization
     gsap.set(blocksRef.current, { scaleX: 0 });
   };
 
@@ -54,7 +52,6 @@ export default function TransitionProvider({ children }: TransitionProviderProps
     return () => window.removeEventListener("resize", createTransitionGrid);
   }, []);
 
-  // Strict parameter checking for safe calculations
   const getRowBlocks = (row: number) => blocksRef.current.slice(row * COLS, row * COLS + COLS);
 
   const animateIn = (onComplete: () => void) => {
@@ -76,7 +73,7 @@ export default function TransitionProvider({ children }: TransitionProviderProps
         "<"
       );
     });
-    return tl; // Return timeline reference for accurate .kill() tracking
+    return tl;
   };
 
   const animateOut = (onComplete: () => void) => {
@@ -115,10 +112,8 @@ export default function TransitionProvider({ children }: TransitionProviderProps
       }}
       auto
     >
-      {/* Visual Transition Layer Overlay Container */}
       <div ref={transitionGridRef} className="transition-grid" />
       
-      {/* App Component Subtree Hierarchy Wrapper */}
       {children}
     </TransitionRouter>
 

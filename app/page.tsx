@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
-import { useLoginMutation } from '@/lib/store/Api-Hooks/main.api'
+import { AppRoles, useLoginMutation } from '@/lib/store/Api-Hooks/main.api'
 import { useTransitionRouter } from 'next-transition-router';
 import { useAppDispatch } from '@/lib/store/store';
 import { loginSet } from '@/lib/store/Slices/userInfo';
@@ -38,10 +38,9 @@ export default function LoginPage() {
 
 
       const userData = {
-        id: res.user?.id || null,
-        name: res.user?.name || null,
-        email: res.user?.email || null,
-        role: res.user?.role || null,
+        name: res.user?.name ?? null,
+        email: res.user?.email ?? null,
+        role: res.user?.role ?? null,
       };
       
 
@@ -50,12 +49,18 @@ export default function LoginPage() {
       localStorage.setItem("velvetUser", JSON.stringify(userData)); 
   dispatch(loginSet(userData));
 
-  router.replace('/point-of-sale');
+  if (res.user?.role === AppRoles.BRANCH_MANAGER) {
+    router.replace("/branchmanager");
+  } else if (res.user?.role === AppRoles.CASHIER) {
+    router.replace("/point-of-sale");
+  } else if (res.user?.role === AppRoles.INVENTORY_MANAGER) {
+    router.replace("/martinventory");
+  }
 
-    }
 
-
+    
       
+  }
   }
 
 
@@ -78,7 +83,7 @@ export default function LoginPage() {
           <Link href="/" className="text-white text-lg font-sans font-bold tracking-[0.3em] uppercase">
             V E L V E T <span className="text-amber-400">.</span>
           </Link>
-          <div className="w-12 h-[1px] bg-white/40 mt-2" />
+          <div className="w-12 h-px bg-white/40 mt-2" />
         </div>
 
         <div className="relative z-20 my-auto max-w-sm">
@@ -144,7 +149,6 @@ Login Sucessfull
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 w-full">
             
-            {/* Input Wrapper: Email */}
             <div className="flex flex-col w-full">
               <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-2 px-1">
                 Email Address
@@ -169,7 +173,6 @@ Login Sucessfull
               )}
             </div>
             
-            {/* Input Wrapper: Password */}
             <div className="flex flex-col w-full">
               <div className="flex justify-between items-center mb-2 px-1">
                 <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">

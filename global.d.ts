@@ -1,4 +1,3 @@
-// global.d.ts (Alag file honi chahiye)
 import { Mongoose } from "mongoose";
 
 declare global {

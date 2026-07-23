@@ -1,11 +1,12 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
+import { iEmployee } from "@/model/Employee.Model";
 
 
 interface userInfoInterface {
 
     id? : string   | null,
     name : string  | null,
-    role : 'admin' | 'employee' | 'Shef'| 'invertrymanager' | null, 
+    role : iEmployee["role"] | null,
     email : string | null,
 
 }
